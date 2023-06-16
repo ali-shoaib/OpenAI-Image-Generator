@@ -13,11 +13,11 @@ const PostController={
     async UploadImage(req,res){
         try {
             const {prompt,photo} = req.body;
-            // const photoUrl=await cloudinary.uploader.upload(photo);
+            const photoUrl=await cloudinary.uploader.upload(photo);
             
             const newPost = new Post({
                 prompt,
-                photo
+                photo:photoUrl.url
             })
             await newPost.save();
 
